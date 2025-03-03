@@ -18,7 +18,7 @@ load_dotenv()
 
 token_librarything_API = os.getenv('TOKEN_LIBRARYTHING_API')
 
-print("################## SCRAPING #################### \nDébut de l'exécution du script :",datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+print("\nDébut de l'exécution du script :",datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 print("Environnement virtuel requis : env_wsl_bloc_1.")
 print("Environnement virtuel et Python utilisés =", sys.executable)
 
@@ -147,7 +147,7 @@ def google_books_api(title, maxresults = 15):
 
 ########################################################################################## fin de la définition des fonctions
 ########################################################################################## début du scraping
-# print("\nDébut du webscraping de Openlibrary.org")
+print("\nDébut du webscraping de Openlibrary.org")
 
 titres = []
 notes = []
@@ -162,13 +162,13 @@ isbn_defaut = []
 ISBN_verifie = []
 images_openlibrary = []
 
-for i in tqdm(range(1,11), desc="Scraping des 10 pages \"les livres en vogue du moment\" de Openlibrary.org"):
+for i in tqdm(range(1,11), desc="Scraping des 10 pages \"les livres en vogue du moment\""):
     url_scrap = f"https://openlibrary.org/trending/now?page={i}"
     response = requests.get(url_scrap)
     if response.status_code == 200:
         soup = BeautifulSoup(response.text, "html.parser")
         liens = soup.find_all("a", class_="results")
-        # print("\n\n\nextraction des liens et redirection vers les livres de la page",i)
+        print("\n\n\nextraction des liens et redirection vers les livres de la page",i)
         for title in liens:
             url2 = f"""https://openlibrary.org/{title.get("href")}"""
             response2 = requests.get(url2)
@@ -178,11 +178,12 @@ for i in tqdm(range(1,11), desc="Scraping des 10 pages \"les livres en vogue du 
                 try:
                     titre = soup2.find("h1", itemprop="name").text
                     titres.append(titre)
-                    # print("\nExtraction des informations du livre",titre)
+                    print("\nExtraction des informations du livre",titre)
                 except Exception as e:
-                    # print("Echec de récupération du titre dans\n\t\t\t",url2,"\n\t\t\t",e,"\n")
+                    print("Echec de récupération du titre dans\n\t\t\t",url2,"\n\t\t\t",e,"\n")
                     titres.append("indisponible")
                     titre = "indisponible"
+                
                 
                 #exctraction des ISBN 10
                 try:
@@ -234,27 +235,27 @@ for i in tqdm(range(1,11), desc="Scraping des 10 pages \"les livres en vogue du 
                     isbn_defaut.append(def_isbn)
                     
                 if value10 == "indisponible" and value13 == "indisponible":
-                    # print("""\tAucun ISBN français trouvé pendant le scraping d'Openlibrary.org.\n\t\tRequête à l'API Librarything en cours pour tenter de récupérer l'ISBN français.""")
+                    print("""\tAucun ISBN français trouvé pendant le scraping d'Openlibrary.org.\n\t\tRequête à l'API Librarything en cours pour tenter de récupérer l'ISBN français.""")
                     res = get_isbn_with_librarything(token_librarything_API,titre)
                     if res:
-                        # print("\t\tLibrarything propose",len(res),"ISBN...")
+                        print("\t\tLibrarything propose",len(res),"ISBN...")
                         value = find_french_isbn_in_list(res)
                         if value:
                             if len(value) == 10:
                                 value10 = value
                                 isbn10_français.pop()
                                 isbn10_français.append(value)
-                                # print("\t\t...un ISBN 10 français a pu être extrait :",value)
+                                print("\t\t...un ISBN 10 français a pu être extrait :",value)
                             if len(value) == 13:
                                 value13 = value
                                 isbn13_français.pop()
                                 isbn13_français.append(value)
-                                # print("\t\t... un ISBN 13 français a pu être extrait :",value)
+                                print("\t\t... un ISBN 13 français a pu être extrait :",value)
                         if not value :
-                            # print("\t\t... mais aucun n'est français.\n\t\tNouvelle tentative en cours vers l'API google books.")
+                            print("\t\t... mais aucun n'est français.\n\t\tNouvelle tentative en cours vers l'API google books.")###########################################
                             a = google_books_api(titre)
                             if a[3]:
-                                # print("\t\tRésultat avec google books =",a[3])
+                                print("\t\tRésultat avec google books =",a[3])
                                 if a[3] == 10:
                                     value10 = a[3]
                                     isbn10_français.pop()
@@ -264,11 +265,11 @@ for i in tqdm(range(1,11), desc="Scraping des 10 pages \"les livres en vogue du 
                                     isbn13_français.pop()
                                     isbn13_français.append(value13)
                             else :
-                                # print("\t\tGoogle books n'a pas trouvé d'ISBN français pour", titre)
-                                # print("\t\tNouvelle tentative avec cette traduction du titre :", translate_title_to_french(titre))
+                                print("\t\tGoogle books n'a pas trouvé d'ISBN français pour", titre)
+                                print("\t\tNouvelle tentative avec cette traduction du titre :", translate_title_to_french(titre))
                                 res_translated = google_books_api(translate_title_to_french(titre),3)[3]
                                 if res_translated:
-                                    # print("\t\tAvec ce nouveau titre, Google books API a trouvé cet ISBN français:",res_translated)
+                                    print("\t\tAvec ce nouveau titre, Google books API a trouvé cet ISBN français:",res_translated)
                                     if res_translated == 10:
                                         value10 = res_translated
                                         isbn10_français.pop()
@@ -277,13 +278,13 @@ for i in tqdm(range(1,11), desc="Scraping des 10 pages \"les livres en vogue du 
                                         value13 = res_translated
                                         isbn13_français.pop()
                                         isbn13_français.append(value13)
-                                # else :
-                                    # print("\t\tLa traduction du titre n'a pas donné de meilleurs résultats.")
+                                else :
+                                    print("\t\tLa traduction du titre n'a pas donné de meilleurs résultats.")
                     else:
-                        # print("\t\tAucun ISBN trouvé avec l'API de librarything.\n\t\tNouvelle tentative en cours vers l'API google books.")
+                        print("\t\tAucun ISBN trouvé avec l'API de librarything.\n\t\tNouvelle tentative en cours vers l'API google books.")
                         a = google_books_api(titre)
                         if a[3]:
-                            # print("\t\tRésultat avec google books =",a[3])
+                            print("\t\tRésultat avec google books =",a[3])
                             if a[3] == 10:
                                 value10 = a[3]
                                 isbn10_français.pop()
@@ -293,11 +294,11 @@ for i in tqdm(range(1,11), desc="Scraping des 10 pages \"les livres en vogue du 
                                 isbn13_français.pop()
                                 isbn13_français.append(value13)
                         else :
-                            # print("\t\tGoogle books n'a pas trouvé d'ISBN français pour", titre)
-                            # print("\t\tNouvelle tentative avec cette traduction du titre :", translate_title_to_french(titre))
+                            print("\t\tGoogle books n'a pas trouvé d'ISBN français pour", titre)
+                            print("\t\tNouvelle tentative avec cette traduction du titre :", translate_title_to_french(titre))
                             a = google_books_api(translate_title_to_french(titre),3)[3]
                             if a:
-                                # print("\t\tAvec ce nouveau titre, Google books API a trouvé cet ISBN français:",a)
+                                print("\t\tAvec ce nouveau titre, Google books API a trouvé cet ISBN français:",a)
                                 if a == 10 :
                                     isbn10_français.pop(0)
                                     isbn10_français.append(a)
@@ -306,11 +307,11 @@ for i in tqdm(range(1,11), desc="Scraping des 10 pages \"les livres en vogue du 
                                     isbn13_français.pop()
                                     isbn13_français.append(a)
                                     value13 = a
-                            # else :
-                                # print("\t\tLa traduction du titre n'a pas donné de meilleurs résultats.")
+                            else :
+                                print("\t\tLa traduction du titre n'a pas donné de meilleurs résultats.")
                                 
-                # if value10 == "indisponible" and value13 == "indisponible" and def_isbn == "indisponible":
-                    # print("\t\tAucun isbn extrait.")
+                if value10 == "indisponible" and value13 == "indisponible" and def_isbn == "indisponible":
+                    print("\t\tAucun isbn extrait.")
 
                 ISBN_verifie.append("ISBN pas encore vérifié")
                 #exctraction des notes    
@@ -319,7 +320,7 @@ for i in tqdm(range(1,11), desc="Scraping des 10 pages \"les livres en vogue du 
                     # note = re.sub(r"\(.*?\)", "", note)
                     notes.append(note)
                 except Exception as e:
-                    # print("\tEchec de récupération de la note.")
+                    print("\tEchec de récupération de la note.")
                     notes.append("indisponible")
 
                 #extraction des auteurs
@@ -337,7 +338,7 @@ for i in tqdm(range(1,11), desc="Scraping des 10 pages \"les livres en vogue du 
                             # print("\t\tEchec de récupération de l'auteur, même après une deuxième tentative sur google_books_API.")
                             auteurs.append("indisponible")
                 except Exception as e:
-                    # print("\tEchec de récupération de l'auteur.")
+                    print("\tEchec de récupération de l'auteur.")
                     auteurs.append("indisponible")
 
                 #extraction des dates de publication
@@ -345,7 +346,7 @@ for i in tqdm(range(1,11), desc="Scraping des 10 pages \"les livres en vogue du 
                     date_de_publication = soup2.find("span", itemprop="datePublished").text
                     dates_de_publication.append(date_de_publication)
                 except Exception as e:
-                    # print("\tEchec de récupération de la date de publication.")
+                    print("\tEchec de récupération de la date de publication.")
                     dates_de_publication.append("indisponible")
 
                 #extraction des éditeurs
@@ -353,7 +354,7 @@ for i in tqdm(range(1,11), desc="Scraping des 10 pages \"les livres en vogue du 
                     editeur = soup2.find("a", itemprop="publisher").text
                     editeurs.append(editeur)
                 except Exception as e:
-                    # print("\tEchec de récupération de l'éditeur.")
+                    print("\tEchec de récupération de l'éditeur.")
                     editeurs.append("indisponible")
 
                 #extraction des nombres de pages
@@ -365,22 +366,22 @@ for i in tqdm(range(1,11), desc="Scraping des 10 pages \"les livres en vogue du 
                         else:
                             nombres_de_pages.append("indisponible")
                     else :
-                        # print("\tPas de nombre de pages extrait depuis Openlibrary.")
+                        print("\tPas de nombre de pages extrait depuis Openlibrary.")
                         a = google_books_api(titre)[2]
                         if a and int(a) > 5:
-                            # print("\t\tNombre de pages récuépré via Google_books_API :",a)
+                            print("\t\tNombre de pages récuépré via Google_books_API :",a)
                             nombres_de_pages.append(int(a))
                         else:
-                            # print("\t\tEchec de récupération du nombre de pages, même après une deuxième tentative sur google_books_API.")
+                            print("\t\tEchec de récupération du nombre de pages, même après une deuxième tentative sur google_books_API.")
                             nombres_de_pages.append("indisponible")
                 except Exception as e:
-                    # print("\tEchec de récupération du nombre de pages.")
+                    print("\tEchec de récupération du nombre de pages.")
                     a = google_books_api(titre)[2]
                     if a and int(a) > 5:
-                        # print("\t\tNombre de pages récupéré via Google_books_API :",a)
+                        print("\t\tNombre de pages récupéré via Google_books_API :",a)
                         nombres_de_pages.append(int(a))
                     else:
-                        # print("\t\tEchec de récupération du nombre de pages, même après une deuxième tentative sur google_books_API.")
+                        print("\t\tEchec de récupération du nombre de pages, même après une deuxième tentative sur google_books_API.")
                         nombres_de_pages.append("indisponible")
         
                 #extraction des thèmes
@@ -392,23 +393,23 @@ for i in tqdm(range(1,11), desc="Scraping des 10 pages \"les livres en vogue du 
                     if themes_sous_liste:
                         themes_liste.append(themes_sous_liste)
                     else:
-                        # print("\tEchec de récupération des thèmes")
+                        print("\tEchec de récupération des thèmes")
                         theme = google_books_api(titre)[5]
                         if theme :
                             themes_liste.append(theme)
-                            # print("\t\tThèmes récupérés via Google_books_API")
+                            print("\t\tThèmes récupérés via Google_books_API")
                         else:
                             themes_liste.append("indisponible")
-                            # print("\t\tEchec également avec Google_books_API")
+                            print("\t\tEchec également avec Google_books_API")
                 except Exception as e:
-                    # print("\tEchec de récupération des thèmes")
+                    print("\tEchec de récupération des thèmes")
                     theme = google_books_api(titre)[5]
                     if theme :
                         themes_liste.append(theme)
-                        # print("\t\tThèmes récupérés via Google_books_API")
+                        print("\t\tThèmes récupérés via Google_books_API")
                     else:
                         themes_liste.append("indisponible")
-                        # print("\t\tEchec également avec Google_books_API")
+                        print("\t\tEchec également avec Google_books_API")
 
                 #récupération des images
                 try:
@@ -425,7 +426,7 @@ for i in tqdm(range(1,11), desc="Scraping des 10 pages \"les livres en vogue du 
                     else :
                         images_openlibrary.append("indisponible")
                 except Exception as e:
-                    # print("\tEchec de récupération de l'image dans\n\t\t",url2,"\n\t\t",e,"\n")
+                    print("\tEchec de récupération de l'image dans\n\t\t",url2,"\n\t\t",e,"\n")
                     images_openlibrary.append("indisponible")
             else:
                 print("\t!!redirection vers la description du livre ratée, erreur =",response2.status_code)
@@ -522,4 +523,4 @@ except Exception as e:
 
 end_time = time.time()  
 execution_time = (end_time - start_time)/60
-print(f"Temps d'exécution : {execution_time:.0f} minutes")
+print(f"Temps d'exécution : {execution_time:.4f} minutes")
