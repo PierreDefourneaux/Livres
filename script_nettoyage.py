@@ -143,7 +143,7 @@ df["livre_date"] = df["livre_date"].apply(
 
 df["livre_date"] = df["livre_date"].apply(lambda x: x[0] if x else 0)
 df["livre_date"] = df["livre_date"].fillna(0).astype(int)
-df.loc[~df["livre_date"].between(1901, 2100), "livre_date"] = None #le format YEAR SQL considère valide la plage entre 1901 et 20155
+df.loc[~df["livre_date"].between(1901, 2100), "livre_date"] = None #le format YEAR SQL considère valide la plage entre 1901 et 2155
 df["livre_date"] = pd.to_datetime(df["livre_date"], format="%Y").dt.year
 df["livre_date"] = df["livre_date"].replace({pd.NA: None, float("nan"): None})
 
@@ -208,7 +208,20 @@ df_livres["livre_date"] = df["livre_date"]
 ##### df_auteurs et df_auteurs_livres #####
 ###########################################
 def assigne_un_auteur_id(auteur):
-    """Pour un auteur, assigne l'id en interrogeant le dictionnaire auteurs:id de la base des données ou en génère un nouveau si besoin"""
+    """
+    Attribue un identifiant unique à un auteur.
+
+    Cette fonction recherche un auteur dans le dictionnaire `dico_auteurs_deja_presents` qui vient de la base de données. 
+    Si l'auteur est trouvé, son identifiant existant est retourné. 
+    Sinon, un nouvel identifiant est généré, enregistré dans le dictionnaire et retourné.
+    
+    Paramètres :
+        auteur (str | None) : Nom de l'auteur. Si c'est None, l'auteur_id = 1 est retourné.
+
+    Retourne :
+        int : Identifiant unique de l'auteur.
+    """
+
     global current_auteur_id  # Utilisation de la variable globale current_id = je vais la mettre à jour en dehors du scope de la fonction
     for auteur_id, auteur_nom in dico_auteurs_deja_presents.items(): # .items() déstructure le dictionnaire en donnant une vue sur des tuples
         if auteur == None:
@@ -247,7 +260,18 @@ df_auteurs = df_auteurs.dropna(subset=["auteur_nom"])
 ##### df_editeurs et df_editeurs_livres #####
 #############################################
 def assigne_un_editeur_id(editeur):
-    """Pour un editeur, assigne l'id en interrogeant le dictionnaire editeurs:id de la base des données ou en génère un nouveau si besoin"""
+    """Attribue un identifiant unique à un éditeur.
+
+    Cette fonction recherche un éditeur dans le dictionnaire `dico_editeurs_deja_presents` généré en interrogeant la base de données. 
+    Si l'éditeur est trouvé, son identifiant existant est retourné. 
+    Sinon, un nouvel identifiant est généré, enregistré dans le dictionnaire et retourné.
+
+    Paramètres :
+        editeur (str | None) : Nom de l'éditeur. Quand il n'y a pas d'éditeur, l'editeur_id 1 est retourné.
+
+    Retourne :
+        int : Identifiant unique de l'éditeur.
+    """
     global current_editeur_id  
     for editeur_id, editeur_nom in dico_editeurs_deja_presents.items(): 
         if editeur == None:
@@ -280,7 +304,17 @@ df_editeurs = df_editeurs.dropna()
 ##### df_thematiques et df_thematiques_livres #####
 ###################################################
 def assigne_un_thematique_id(thematique):
-    """Pour une thematique, assigne l'id en interrogeant le dictionnaire thematiques:id de la base des données ou en génère un nouveau si besoin"""
+    """Attribue un identifiant unique à une thématique.
+
+    Cette fonction recherche une thématique dans le dictionnaire `dico_themes_deja_presents` généré via la base de données. 
+    Si la thématique est trouvée, son identifiant existant est retourné. 
+    Sinon, un nouvel identifiant est généré, enregistré dans le dictionnaire et retourné.
+
+    Paramètres :
+        thematique (str | None) : Nom de la thématique. S'il n'y a pas de thématique, l'id 1 est retourné.
+
+    Retourne :
+        int : Identifiant unique de la thématique."""
     global current_thematique_id  
     for thematique_id, thematique_nom in dico_themes_deja_presents.items(): 
         if thematique == None:
@@ -292,7 +326,17 @@ def assigne_un_thematique_id(thematique):
     return current_thematique_id
 
 def translate_tag_to_french(tag):
-    """Traduit un tag/thématique. Détecte la langue d'origine et retourne la traduction en français."""
+    """Traduit un tag/thématique en français.
+
+    Cette fonction détecte automatiquement la langue d'origine du tag et 
+    retourne la traduction en français à l'aide de GoogleTranslator.
+
+    Paramètres :
+        tag (str) : Tag ou thématique à traduire.
+
+    Retourne :
+        str : Traduction du tag en français.
+    """
     traduction = GoogleTranslator(source='auto', target='fr').translate(tag)
     return traduction
 

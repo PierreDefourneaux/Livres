@@ -1,6 +1,7 @@
-# CREER LA BASE DE DONNEES DANS L'INVITE DE COMMANDE :
+# MEMO : CREER LA BASE DE DONNEES DANS L'INVITE DE COMMANDE :
 # Se mettre dans le dossier qui contient fichier.sql puis écrire la commande :
 # "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" < bdd.sql -u root -p
+
 from datetime import datetime
 import mysql.connector
 import os
@@ -10,7 +11,7 @@ import pandas as pd
 import numpy as np
 import pymongo
 from pymongo import MongoClient
-print("################# INSERTION ####################\nExécution du script :",datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+print("\n################# INSERTION ####################\nExécution du script :",datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
 load_dotenv()
 
 ################################################################### Partie MySQL
@@ -33,9 +34,18 @@ curseur = connexion.cursor()
 
     
 def remplir_sql(table : str, csv : str, connexion):
-    """Fonction qui prend en argument la table à remplir en str, le csv source en str, et la connexion mysql.connector.
-    Le passage en csv fait perdre les d-types des colonnes pandas. Ici, ils seront retypés avec astype() pour permettre une transformation des 
-    NaN en None afins que ces valeurs manquantes soient admises par MySQL"""
+    """Charge les données d'un fichier CSV dans une table MySQL.
+
+    Cette fonction prend un fichier CSV et insère ses données dans une table spécifiée de la base de données.
+    Elle gère la conversion des types de données pour s'assurer que les valeurs manquantes (NaN) sont converties en `None`,
+    ce qui est compatible avec MySQL. Des ajustements spécifiques sont effectués sur certaines colonnes en fonction du 
+    fichier CSV source, notamment pour le traitement des ISBN.
+
+    Paramètres :
+        table (str) : Le nom de la table MySQL dans laquelle insérer les données.
+        csv (str) : Le chemin vers le fichier CSV à importer.
+        connexion : Connexion active à la base de données MySQL, utilisant `mysql.connector`.
+    """
     df = pd.read_csv(csv)
     if csv == "table_livres.csv":
         df["ISBN_defaut"] = df["ISBN_defaut"].astype("str") #df["ISBN_defaut"] ressort des floats. Il faut traiter ça

@@ -22,21 +22,43 @@ print("\nDébut de l'exécution du script :",datetime.now().strftime("%Y-%m-%d %
 print("Environnement virtuel requis : env_wsl_bloc_1.")
 print("Environnement virtuel et Python utilisés =", sys.executable)
 
-############################################################## Définition des fonctions d'extraction de données
+
+################################################################################################################
+############################### DEFINITION DES FONCTIONS D'EXTRACTION DE DONNEES ###############################
+################################################################################################################
+################################################################################################################
+
 def is_french_isbn(isbn):
-    """Détermine si l'ISBN est français ou pas selon selon la détection des préfixes :
-    "9782" ou "97910" pour les ISBN13
-    "2" pour les ISBN10."""
+    """Vérifie si un ISBN correspond à un ouvrage publié en France.
+
+    Un ISBN est considéré comme français s'il possède l'un des préfixes suivants :
+    - "9782" ou "97910" pour un ISBN-13
+    - "2" pour un ISBN-10
+
+    Paramètres :
+        isbn (str) : Le numéro ISBN à analyser (avec ou sans séparateurs).
+
+    Retourne :
+        bool : True si l'ISBN est français, False sinon.
+    """
     isbn = isbn.replace("-", "").replace(" ", "")
     if isbn.startswith("9782") or isbn.startswith("97910") or isbn.startswith("2"):
             return True
     return False
 
 def find_french_isbn_in_list(isbns):
-    """Parcourt une liste d'ISBN jusqu'à en trouver un qui soit français, puis le retourne.
-    Détermine si l'ISBN est français ou pas selon selon la détection des préfixes :
-    "9782" ou "97910" pour les ISBN13
-    "2" pour les ISBN10.  """
+    """Recherche le premier ISBN français dans une liste.
+
+    Un ISBN est considéré comme français s'il possède l'un des préfixes suivants :
+    - "9782" ou "97910" pour un ISBN-13
+    - "2" pour un ISBN-10
+
+    Paramètres :
+        isbns (list[str]) : Liste de numéros ISBN (avec ou sans séparateurs).
+
+    Retourne :
+        str | None : Le premier ISBN français trouvé, ou None si aucun n'est détecté.
+    """
     count = 0
     while count < len(isbns):
         isbn = isbns[count]
@@ -47,8 +69,18 @@ def find_french_isbn_in_list(isbns):
     return None
 
 def get_isbn_with_librarything(token_librarything_API,title):
-    """Retourne une liste de tous les ISBN connus par l'API librarything pour ce livre à partir du titre donné.
-    Ecrivez le titre naturellement en conservant les espaces."""
+    """Récupère une liste d'ISBN pour un livre donné via l'API LibraryThing.
+
+    Cette fonction interroge l'API LibraryThing à partir du titre d'un livre 
+    et retourne une liste des ISBN associés.
+
+    Paramètres :
+        token_librarything_API (str) : Clé d'authentification pour l'API LibraryThing.
+        title (str) : Titre du livre (écrit naturellement avec espaces).
+
+    Retourne :
+        list[str] | None : Liste des ISBN trouvés ou None en cas d'erreur.
+    """
     title = title.replace(' ', '+')
     url = f"https://www.librarything.com/api/{token_librarything_API}/thingTitle/{title}"
     response = requests.get(url)
@@ -62,7 +94,18 @@ def get_isbn_with_librarything(token_librarything_API,title):
         return None
 
 def get_book_from_isbn(isbn):
-    """lance un requests.get(url) vers une page de librarything depuis l'ISBN"""
+    """Envoie une requête à LibraryThing pour récupérer la page d'un livre à partir de son ISBN.
+    Cette fonction a été utile à l'exploration, elle ne retourne rien.
+
+    Cette fonction effectue une requête HTTP vers LibraryThing en utilisant l'ISBN fourni 
+    et indique si la requête a réussi ou échoué.
+
+    Paramètres :
+        isbn (str) : Numéro ISBN du livre.
+
+    Retourne :
+        None : Affiche un message en fonction du succès ou de l'échec de la requête.
+    """
     url = f"https://www.librarything.com/isbn/{isbn}"
     response = requests.get(url)
     if response.status_code == 200:
@@ -71,14 +114,46 @@ def get_book_from_isbn(isbn):
         print(f"Erreur lors de la requête https://www.librarything.com/isbn/ : {response.status_code}")
 
 def translate_title_to_french(titre):
+    """Traduit un titre de livre en français en utilisant GoogleTranslator.
+
+    Cette fonction détecte automatiquement la langue d'origine et traduit 
+    le titre en français.
+
+    Paramètres :
+        titre (str) : Titre du livre à traduire.
+
+    Retourne :
+        str : Titre traduit en français.
+    """
     traduction = GoogleTranslator(source='auto', target='fr').translate(titre)
     return traduction
 
 def google_books_api(title, maxresults = 15):
-    """interroge google_books_api avec le titre d'un livre. 
-    Retourne un tuple data, title, page_count, isbn_fr, author, theme, response.status_code.
-    Argument 1 = titre du livre (on peut laisser les espaces)
-    Argument 2 = nombre de résultats maximal pour la requête"""
+    """Interroge l'API Google Books pour récupérer des informations sur un livre.
+
+    Cette fonction recherche un livre par son titre en interrogeant l'API Google Books
+    et extrait les informations suivantes :
+    - Le titre du premier résultat
+    - Le nombre de pages du livre (si disponible)
+    - Un ISBN français (si détecté)
+    - Les auteurs
+    - Les catégories/thèmes du livre
+    - Le code de statut de la réponse HTTP
+
+    Paramètres :
+        title (str) : Titre du livre (les espaces sont autorisés).
+        maxresults (int, optionnel) : Nombre maximal de résultats à récupérer (par défaut 15).
+
+    Retourne :
+        tuple : Contient les éléments suivants :
+            - data (dict | None) : Données brutes retournées par l'API.
+            - title (str | None) : Titre du premier livre trouvé.
+            - page_count (int | None) : Nombre de pages du livre.
+            - isbn_fr (str | None) : ISBN français détecté (ISBN-10 commençant par "2" ou ISBN-13 commençant par "9782"/"97910").
+            - author (list[str] | None) : Liste des auteurs du livre.
+            - theme (str | None) : Catégories/thèmes du livre.
+            - status_code (int) : Code de statut HTTP de la réponse.
+    """
     url = "https://www.googleapis.com/books/v1/volumes"
     params = {
         "q": f"intitle:{title}",
@@ -145,8 +220,11 @@ def google_books_api(title, maxresults = 15):
     else : 
         return None, None, None, None, None, None, response.status_code
 
-########################################################################################## fin de la définition des fonctions
-########################################################################################## début du scraping
+################################################################################################################
+######################################### DEBUT DU CODE DE SCRAPING ############################################
+################################################################################################################
+################################################################################################################
+
 print("\nDébut du webscraping de Openlibrary.org")
 
 titres = []
@@ -162,7 +240,7 @@ isbn_defaut = []
 ISBN_verifie = []
 images_openlibrary = []
 
-for i in tqdm(range(1,11), desc="Scraping des 10 pages \"les livres en vogue du moment\""):
+for i in tqdm(range(1,2), desc="Scraping des 10 pages \"les livres en vogue du moment\""):
     url_scrap = f"https://openlibrary.org/trending/now?page={i}"
     response = requests.get(url_scrap)
     if response.status_code == 200:
@@ -434,6 +512,10 @@ for i in tqdm(range(1,11), desc="Scraping des 10 pages \"les livres en vogue du 
         print("\t!!", datetime.now().strftime("%Y-%m-%d %H:%M:%S"), "echec de la requete ",url_scrap, " status_code erreur =",response.status_code)
 
 
+################################################################################################################
+######################################### AGREGATION DES DONNEES ###############################################
+################################################################################################################
+################################################################################################################
 
 themes = []
 for i in themes_liste:

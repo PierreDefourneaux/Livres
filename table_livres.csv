@@ -1,95 +1,132 @@
 livre_id,livre_nom,livre_nombre_de_pages,livre_note,ISBN_10,ISBN_13,ISBN_defaut,ISBN_verifie,livre_date
-1,laut bercerita,390,4.1 ,,9782895123552,9786024246945,0,2017.0
-2,the secret keeper of jaipur,384,5.0 ,2381225218,,9780778331858,0,2021.0
-3,the world of premchand,215,,,2021443582,,0,1969.0
-4,mansarovar - 5,254,,,,9789390852857,0,2021.0
-5,mansarovar - part 6,274,,,,9781537252261,0,2016.0
-6,cultural anthropology loose leaf edition,412,,,2307022147,9781260711561,0,2021.0
-7,mansarovar - part 1,328,,,,9781537178943,0,2016.0
-8,applied statistics,773,,,2744075973,,0,1982.0
-9,negeri para bedebah,152,5.0 ,,9782882501110,,0,2012.0
-10,lars elling,200,,,2246668891,9788275473866,0,2010.0
-11,il gatto col cappello / the cat in the hat,67,4.1 ,,2359050893,9788809208704,0,1999.0
-12,ronaldo rules,128,5.0 ,2821212348,,9781783125784,0,2020.0
-13,an introduction to game theory,533,,,9782746218727,,0,2004.0
-14,football superstars,128,,,2226455434,9781783125364,0,2020.0
-15,word power made easy,412,,2521102768,,,0,1963.0
-16,hujan,320,4.1 ,,2501154347,9786020324784,0,2018.0
-17,science for tenth class physics (part 1),264,,,,9788121913171,0,2000.0
-18,how to be confident,212,,,2813219266,9781791504359,0,2019.0
-19,king of pride,308,4.2 ,,9782893938332,9781728289731,0,2023.0
-20,bird on my windowsill,448,,,9782890212787,9780143464624,0,2024.0
-21,sustain me : a handbook of natural remedies,290,3.0 ,,2412040591,9780648611875,0,2024.0
-22,globalization,382,,,2810010234,9780520395756,0,2023.0
-23,principles of plasma discharges and materials processing,744,,,9782744501128,9780471724254,0,2005.0
-24,storia di mose corenese,403,5.0 ,,,,0,
-25,the battle for cebu,307,,,2258124107,9789715390422,0,2014.0
-26,diagnostic ultrasound,585,,,9782294017902,,0,2005.0
-27,poesia simbolista francesa,432,,,2296470785,,0,1975.0
-28,diary of an oxygen thief,151,4.1 ,,,9781501157851,0,2016.0
-29,the 100-year life,264,,,9791023512854,9781472930156,0,2016.0
-30,le trone de fer,416,4.2 ,2290019437,9782290019436,,0,2011.0
-31,court of thorns and roses hardcover box set,3300,5.0 ,,9782732487595,9781635577716,0,2021.0
-32,sprachstorungen im kindesalter. materialien zur fruherkennung und beratung.,145,,,,9783137785040,0,2000.0
-33,gefangen in new york.,138,,,9782870092613,9783423078177,0,1981.0
-34,erp,424,,,9782281141528,,0,2000.0
-35,"object oriented programming with c++, 8th edition",226,4.0 ,,2322251917,9789389949186,0,2019.0
-36,twisted love,210,3.7 ,2019456486,,9780349434278,0,2022.0
-37,the study of language,299,5.0 ,2010527003,,9787560019536,0,2000.0
-38,cinquante nuances de grey,672,4.0 ,2253176508,9782253176503,,0,2014.0
-39,after,706,4.5 ,2755617349,9782755617344,,0,2015.0
-40,codex tau empire,134,5.0 ,,,9781785810091,0,2015.0
-41,aprendendo a aprender,347,3.5 ,,9782290409213,9788586622458,0,2015.0
-42,dune,541,4.3 ,2266027220,,,0,1965.0
-43,the global city,398,,,2340045142,9780691070636,0,2001.0
-44,the phantom of the opera,357,3.9 ,2253009504,,,0,1911.0
-45,introducao a filosofia,227,,,282490366X,,0,1981.0
-46,a sutil arte de ligar o f*da-se,72,4.1 ,2212567596,,9788551002490,0,2017.0
-47,funerals are fatal,418,4.5 ,2253036609,,,0,1953.0
-48,designing machine learning systems,386,,,2212801602,9781098107963,0,2022.0
-49,the sixties,513,5.0 ,2080116622,,,0,1987.0
-50,"elizabeth i and religion, 1558-1603",73,,,,,0,1994.0
-51,rumpelstiltskin (read-aloud),40,5.0 ,,9782884450393,9780544245518,0,2013.0
-52,mrs. piggle-wiggle,119,4.1 ,,,9780590413862,0,1987.0
-53,rumpelstiltskin,40,5.0 ,,2849337927,9780544245532,0,2013.0
-54,"rebellion and disorder under the tudors, 1485-1603",122,,,9782262066116,9781471876615,0,2017.0
-55,rumpelstiltskin big book,32,5.0 ,2700010663,,9780544555556,0,2015.0
-56,early islamic glass,38,,,9782752400062,,0,1979.0
-57,fundamentals of statistics,704,,,2807343414,9780134508306,0,2017.0
-58,sree sree digambar baba,80,,,,,0,1994.0
-59,mere christianity,167,,285031580X,,,0,1971.0
-60,lineamenti di storia della scrittura latina,555,,,,,0,1997.0
-61,women who think too much,273,2.8 ,2501049616,,,0,2004.0
-62,the beginning of guidance,201,,,9782763772035,9781933764061,0,2010.0
-63,wimpy kid. ikke en dagbog (in danish),,4.2 ,,9791023520651,9788702126754,0,2012.0
-64,the iliad of homer,170,4.0 ,,,,0,1911.0
-65,percy jackson and the olympians,400,4.5 ,2226195440,,9781423121718,0,
-66,dunlop dynasty,342,,,,9781785374821,0,2023.0
-67,men are from mars women are from venus,359,3.8 ,2290336726,,9788973997121,0,1993.0
-68,"world of the cell, the (7th edition)",912,,,2832550533,9780805393934,0,2008.0
-69,ren xing de ruo dian ,296,4.2 ,,2379350671,9787210023340,0,2001.0
-70,the other six days,46,,,2950041906,9780952778189,0,2017.0
-71,conscience,272,,,2896262849,9781324000891,0,2019.0
-72,palladio and english palladianism.,224,,,,,0,1974.0
-73,za shikuretto,318,3.8 ,,,9784047915572,0,2007.0
-74,surrounded by idiots,304,4.1 ,,,9781250179944,0,2019.0
-75,the power of your subconscious mind,224,4.0 ,,9782761955096,9781434441638,0,2013.0
-76,thank you for leaving,200,1.0 ,,2280428008,9789367901229,0,2025.0
-77,ikigai,194,3.8 ,,9791033911401,9780143130727,0,2017.0
-78,haeripoteowa ajeukabanyi joesu,511,4.3 ,2070528189,,9788989708698,0,2003.0
-79,metode penelitian kualitatif,165,5.0 ,,2760551415,,0,2018.0
-80,harry potter et la chambre des secrets,145,4.2 ,2070619184,9782070619184,,0,2008.0
-81,the weaver's gift (leveled readers),22,5.0 ,,,9780618291236,0,2004.0
-82,hydronic system design and operation,556,,,,,0,1985.0
-83,power. die 48 gesetze der macht. ein joost- elffers- buch.,337,4.1 ,2848992549,,9783446197596,0,1999.0
-84,tesis doctorales y trabajos de investigacion,504,,,9782013073882,9788428320528,0,1995.0
-85,"me! (just like you, only better) (dear dumb diary #12)",160,5.0 ,,,9780545116169,0,2011.0
-86,criza de originalitate la adolescenti,167,,,2705923616,,0,1979.0
-87,spectrum of ecstasy,315,,,,,0,2003.0
-88,the marrying game,188,3.7 ,2280018780,,9780373030132,0,1989.0
-89,lan hai ce lue,355,5.0 ,,,,0,2005.0
-90,guide des sciences et technologies industrielles 2020-2021 - eleve - 2020,624,,2091670413,9782091670416,,0,2020.0
-91,the name of the tree,38,,,9782930646510,9780888995223,0,2002.0
-92,poemamundi,66,,,,,0,2004.0
-93,el contrato social,300,4.2 ,,,,0,
-94,economie internationale,891,,2804120945,9782804120948,,0,1995.0
+1360,social foundations of thought and action,617,,,2130680283,,0,1986.0
+1361,the monk who sold his ferrari,216,4.5 ,,9782892255775,9788179921623,0,2003.0
+1362,ne tirez pas sur l'oiseau moqueur,340,4.1 ,2877065502,9782877065504,,0,2005.0
+1363,1000 english idioms explained,191,,,9782816135596,9780572033903,0,2008.0
+1364,in name only,452,,,,9781299370265,0,2014.0
+1366,major problems in the history of the vietnam war,635,,,9782803445875,,0,1990.0
+1368,"indaba, my children",354,5.0 ,,,,0,1985.0
+1370,hukum perusahaan indonesia,494,4.0 ,,9791034403592,,0,1999.0
+1371,religious history of orissa,479,,,,,0,2004.0
+1372,"sex, gender and society",225,5.0 ,,2845861117,,0,1972.0
+1373,"when you're ready, this is how you heal",184,4.4 ,,9782204065139,9781949759440,0,2022.0
+1374,mountain is you,241,3.0 ,,2702927726,9781949759228,0,2020.0
+1375,kladbishche domashnikh zhivotnykh,380,4.0 ,,2342057237,9785170770861,0,2013.0
+1376,myth and the creative process,528,,,2271119693,9780814330029,0,2003.0
+1377,girl on an altar,289,,,,9780571378753,0,2022.0
+1378,love in the dark,187,3.8 ,,9782957949618,9780373109876,0,1987.0
+1379,the diary of a ceo,238,4.4 ,,9782710106494,9781529146509,0,2023.0
+1380,manase : arbhata ani cillara.,132,,,,,0,1988.0
+1381,as long as the lemon trees grow,416,4.4 ,2092496174,,9780316351614,0,2022.0
+1382,ten ways to improve your bridge (master bridge series),128,,,,9780297844938,0,2008.0
+1383,san ti  (san ti),325,3.9 ,2330113552,,9789861206066,0,2011.0
+1384,ugc/net/slet psychology,204,,,,,0,
+1385,vendeur d'elite,191,,2100011596,9782100011599,,0,1992.0
+1386,rules of people,264,4.7 ,,,9781292441146,0,2022.0
+1387,ultralearning,304,4.4 ,,,9780062852687,0,2019.0
+1388,siddharth,80,2.0 ,,,,0,2002.0
+1389,god so loves the city,313,1.0 ,,2322089737,9780912552866,0,1994.0
+1390,methods of multivariate statistics,697,,,9782100758517,,0,2002.0
+1391,looking for africa,163,,,,9781910176689,0,2015.0
+1392,bumi,438,4.4 ,,9782841032273,9786020301129,0,2014.0
+1393,na ni ya chuan qi :mo fa shi de wai sheng ,215,4.0 ,,,9789574558674,0,2006.0
+1394,los siete principios para hacer que el matrimonio funcione,286,4.7 ,,201715170X,9780307739704,0,2010.0
+1396,psychology,684,5.0 ,,9782804132828,,0,1994.0
+1397,"tour design, marketing, and management",357,,,2376875889,,0,1993.0
+1398,social and behavioral aspects of pharmacy practice,614,,,276053653X,9781465252579,0,2016.0
+1399,how to win at bridge in 30 days,121,,,271448929X,9780713483604,0,2003.0
+1400,heavenly contracts,128,,,9782711641604,9780297853534,0,2007.0
+1401,bukowski,134,,2253033979,,9780876859421,0,1998.0
+1402,persuasions and performances,304,,,,,0,1986.0
+1403,famous bridge disasters,128,,,,9780575067455,0,1999.0
+1404,the woman and the ape,256,,2020301601,,9780385256278,0,1996.0
+1405,embodiment and experience,294,,,2326061128,,0,1994.0
+1406,dizionario onomastico della sicilia,1786,,,9782846302036,,0,1994.0
+1408,the bridge adventures of robin hood,240,,,2385820668,9780713476422,0,1995.0
+1410,another 52 great bridge tips,160,,,2889663744,9780713490480,0,2007.0
+1411,all hands on deck!,128,,,9791097338480,9780575068476,0,2000.0
+1412,wireless sensor networks,528,,,,9780470443514,0,2009.0
+1413,matlab for dummies,406,,,,9781118820100,0,2015.0
+1414,"big, simple and easy to colour animal faces colouring book for toddlers ages 1-5",26,,,,9798751532963,0,2021.0
+1415,the minotaur (3.11 young reading series one with audio cd),52,,,,9781409566809,0,2001.0
+1416,membongkar gurita cikeas,183,5.0 ,,,9786028174350,0,2010.0
+1417,the essential aurobindo.,258,,,9782382550489,,0,1973.0
+1418,love in the time of chaos,174,,,9782752906434,9781851322992,0,2025.0
+1419,kosher bridge (master bridge series),128,,,,9780575066328,0,1998.0
+1420,cornea,619,,,,9788572411660,0,1997.0
+1421,ten ways to improve your bridge,128,,,,9780575070677,0,2000.0
+1422,bangkok,248,,,9782724216196,,0,2008.0
+1423,robin hood's bridge memoirs,144,,,2221265734,9780713482454,0,2003.0
+1424,logic and set theory,469,,,9782340041004,9780916060077,0,2004.0
+1425,technical drawing with design (motivate),240,4.5 ,,234308162X,9780333601617,0,1994.0
+1426,eve,281,,220725755X,,9798655692855,0,2020.0
+1427,digital marketing strategy,324,4.0 ,,2212553439,,0,2016.0
+1428,politica economica e strategie aziendali,649,,,2746231468,9788843019625,0,2001.0
+1429,the pact,496,,,2376527864,9781439501528,0,2008.0
+1430,leaving time,405,3.6 ,,9791040520689,,0,2014.0
+1431,tenth circle,422,,,2403006548,9781444706697,0,2008.0
+1432,plain truth,416,3.8 ,,9782956894520,9780340836569,0,2004.0
+1433,perfect match,368,,,9782280499040,9780743418737,0,2003.0
+1434,sing you home,256,,2521273287,,9781444724561,0,2011.0
+1435,mercy,508,,2267020327,,9780340839348,0,2006.0
+1436,keeping faith,422,4.7 ,2259011144,,,0,1999.0
+1437,el pequeno libro de las grandes decisiones,176,4.0 ,,2702929486,9788415320036,0,2011.0
+1438,shi fa de 19 fen zhong,507,4.3 ,,,9789570522587,0,2008.0
+1439,zi zi de shou hu zhe ,,3.5 ,,,9789570521191,0,2008.0
+1440,reading the cards (the bridge technique series),64,,,,9781894154345,0,2001.0
+1441,dream psychology,255,4.3 ,,9782953652338,9781081377236,0,2019.0
+1442,marine biology,462,5.0 ,,9782711771950,,0,2013.0
+1443,"eliminations & throw ins (the bridge technique series, 4)",64,,,,9781894154246,0,2000.0
+1445,selamat tinggal,360,4.3 ,,2075029083,9786020647821,0,2020.0
+1446,improve your bridge,242,,,236832576X,9781444102932,0,2010.0
+1447,"learn to play winning bridge : a comprehensive teaching course including guidance on the importance of tactical bidding, card play and defence at three differe",256,,,9782412095027,9781846811579,0,2014.0
+1448,the threat of love,288,3.1 ,,2280498448,9780263126235,0,1991.0
+1449,famous play decisions (master bridge series),96,,,,9780575064560,0,1997.0
+1450,permutation city,340,3.7 ,2253072249,,,0,1994.0
+1451,in the miso soup,1031,3.0 ,2877306380,,,0,2006.0
+1452,dynamics of the soul,352,,,9782863162057,9780929874012,0,2001.0
+1453,secrets of expert card play,144,,,,9780713482812,0,2003.0
+1454,salem falls,528,,2277003395,,9780340838211,0,2005.0
+1455,lone wolf,285,,226621151X,,9781611733662,0,2012.0
+1456,house rules,990,5.0 ,2009026381,,,0,2010.0
+1457,a court of wings and ruin,720,4.2 ,2732488801,,9781619634480,0,2017.0
+1458,vanishing acts,476,,225807178X,,9780340962794,0,2008.0
+1459,harvesting the heart,453,3.4 ,,9791030104080,,0,1993.0
+1460,the hidden side of bridge,128,,,2402117923,9780713479317,0,1996.0
+1461,second glance,448,,,9791026261056,9781416583868,0,2008.0
+1462,fire alarm systems technician,156,,,2098125399,9781731844231,0,2020.0
+1463,fables for the female sex.,192,,,,,0,
+1464,stanley h. kaplan: test pilot,176,,,,9780743201681,0,2001.0
+1465,billion dollar whale,379,4.7 ,,2261406592,9780316436502,0,2018.0
+1466,"1,000 reasons never to kiss a boy",249,,,2379615500,9780823420445,0,2007.0
+1467,what's murder between friends,324,,,9782600010955,9781038772565,0,2024.0
+1468,original dao de jing,187,,,9791041997534,9781734862102,0,2022.0
+1469,marriage make-up,460,3.2 ,,2215139099,9780263223125,0,2011.0
+1470,akustik fur musiker,137,,,,,0,1978.0
+1471,winning duplicate tactics,242,,,271449157X,9781771400176,0,2014.0
+1472,inspired cardplay (master bridge series),144,,,,9780304365869,0,2003.0
+1473,"mahatma gandhi, the last 200 days",530,,,,,0,2003.0
+1474,fundamentals and practical aspects of gas injection,152,,,9782915466720,9783030772024,0,2022.0
+1477,kosher bridge,128,,,9782080661524,9780297868675,0,2013.0
+1478,abbot's return to earth,144,,,2365752977,9781474603782,0,2016.0
+1479,indian philosophy,648,4.2 ,,9782711631360,,0,1923.0
+1480,modern man in search of a soul,282,4.7 ,2226028218,,,0,1933.0
+1481,cooper's the last of the mohicans,646,3.7 ,208070611X,,,0,1932.0
+1482,shakespeare's comedy of the tempest,226,4.0 ,2080706683,,,0,1904.0
+1483,essentials of government for west africa,389,2.6 ,,9782845866447,,0,1978.0
+1484,the lady and the unicorn,200,,2711822826,,9781859955192,0,2000.0
+1485,the green mile: part three,90,4.4 ,2277301027,,9780451190543,0,1996.0
+1486,10 more ways to improve your bridge,130,,,,9780297859130,0,2010.0
+1487,lo strano caso del cane ucciso a mezzanotte,280,,2266148710,,,0,
+1489,the mime order,374,4.4 ,2290262684,,9781408857397,0,2015.0
+1490,the green mile: part two,92,4.7 ,2277301019,,,0,1996.0
+1492,a connecticut yankee in king arthur's court,199,3.8 ,2913661564,,,0,2015.0
+1493,harlem rhapsody,400,,,,9780593638484,0,2025.0
+1494,stephen king,608,3.0 ,2253151432,,9781587671609,0,2008.0
+1496,defend with your life,150,,,2706287640,9781587761461,0,2003.0
+1497,women of viet nam.,223,,,9782884770040,,0,1974.0
+1498,talvez a sua jornada agora seja so sobre voce. cronicas,144,3.1 ,,2840507447,9786555357271,0,2019.0
+1500,strategic brand management,288,,,9782857901198,9780199260003,0,2007.0
+1501,autobiography of a yogi,301,4.2 ,2290003328,,9781619491250,0,2012.0
+1502,famous bridge records (master bridge series),144,,,,9780304361403,0,2002.0
+1503,win at bridge: a teach youself guide (teach yourself series),176,,,,9780071740227,0,2010.0
