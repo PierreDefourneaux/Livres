@@ -1,0 +1,5 @@
+0 * * * * . /home/pierre/bloc_1/env_wsl_bloc_1/bin/activate && cd /mnt/c/Users/Utilisateur/projet_bloc_1/bloc1  && python3 /mnt/c/Users/Utilisateur/projet_bloc_1/bloc1/script_webscrap.py >> /mnt/c/Users/Utilisateur/projet_bloc_1/bloc1/res.log
+
+40 * * * * . /home/pierre/bloc_1/env_wsl_bloc_1/bin/activate && cd /mnt/c/Users/Utilisateur/projet_bloc_1/bloc1  && python3 /mnt/c/Users/Utilisateur/projet_bloc_1/bloc1/script_nettoyage.py >> /mnt/c/Users/Utilisateur/projet_bloc_1/bloc1/res.log
+
+55 * * * * . /home/pierre/bloc_1/env_wsl_bloc_1/bin/activate && cd /mnt/c/Users/Utilisateur/projet_bloc_1/bloc1  && python3 /mnt/c/Users/Utilisateur/projet_bloc_1/bloc1/script_insertion.py >> /mnt/c/Users/Utilisateur/projet_bloc_1/bloc1/res.log

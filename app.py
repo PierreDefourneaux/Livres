@@ -172,6 +172,58 @@ async def get_auteurs(
 
     return results
 
+@app.get("/editeurs")
+async def get_editeurs(
+    credentials: HTTPAuthorizationCredentials = Depends(security),
+    limit: Optional[int] = Query(10, alias="limit")
+):
+    """
+    ## Route qui permet de récupérer tous les editeurs connus dans la base de données
+    - **param limit :** int = Nombre d'editeurs limite à retourner
+    - **return :** Liste des noms d'editeurs, et editeur_id associé
+    """
+    # Vérification du token
+    await verify_token(credentials)
+    
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+
+    query = "SELECT * FROM editeurs LIMIT %s"
+    cursor.execute(query, (limit,))
+
+    results = cursor.fetchall()
+
+    cursor.close()
+    connection.close()
+
+    return results
+
+@app.get("/thematiques")
+async def get_editeurs(
+    credentials: HTTPAuthorizationCredentials = Depends(security),
+    limit: Optional[int] = Query(10, alias="limit")
+):
+    """
+    ## Route qui permet de récupérer tous les editeurs connus dans la base de données
+    - **param limit :** int = Nombre d'editeurs limite à retourner
+    - **return :** Liste des noms d'editeurs, et editeur_id associé
+    """
+    # Vérification du token
+    await verify_token(credentials)
+    
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+
+    query = "SELECT * FROM editeurs LIMIT %s"
+    cursor.execute(query, (limit,))
+
+    results = cursor.fetchall()
+
+    cursor.close()
+    connection.close()
+
+    return results
+
 @app.get("/livres_par_auteur")
 async def get_livres_par_auteur(
     credentials: HTTPAuthorizationCredentials = Depends(security),
@@ -214,13 +266,89 @@ async def get_livres_par_auteur(
 
     return results
 
+@app.get("/livres_par_editeur")
+async def get_livres_par_editeur(
+    credentials: HTTPAuthorizationCredentials = Depends(security),
+    editeur_nom: Optional[str] = Query(None, alias="editeur_nom"),
+    limit: Optional[int] = Query(10, alias="limit")
+):
+    """
+    ## Route qui permet de récupérer tous les noms de livre d'un même éditeur
+    - **param editeur_nom :** string = nom de l'éditeur
+    - **param limit :** int = Nombre de livres limite à retourner
+    - **return :** Liste des livres
+    """
+    # Vérification du token
+    await verify_token(credentials)
+    
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+
+    query = """
+    SELECT livres.livre_id, livres.livre_nom
+    FROM livres
+    INNER JOIN editeurs_livres ON livres.livre_id = editeurs_livres.livre_id
+    INNER JOIN editeurs ON editeurs_livres.editeur_id = editeurs.editeur_id
+    WHERE 1=1"""
+    params = []
 
 
+    if editeur_nom:
+        query += " AND editeurs.editeur_nom = %s"
+        params.append(editeur_nom)
+
+    query += " LIMIT %s"
+    params.append(limit)
+
+    cursor.execute(query, params)
+    results = cursor.fetchall()
+
+    cursor.close()
+    connection.close()
+
+    return results
+
+@app.get("/livres_par_thematique")
+async def get_livres_par_thematique(
+    credentials: HTTPAuthorizationCredentials = Depends(security),
+    thematique_nom: Optional[str] = Query(None, alias="thematique_nom"),
+    limit: Optional[int] = Query(10, alias="limit")
+):
+    """
+    ## Route qui permet de récupérer tous les noms de livre d'une même thematique
+    - **param thematique_nom :** string = nom de la thématique
+    - **param limit :** int = Nombre de livres limite à retourner
+    - **return :** Liste des livres
+    """
+    # Vérification du token
+    await verify_token(credentials)
+    
+    connection = get_db_connection()
+    cursor = connection.cursor(dictionary=True)
+
+    query = """
+    SELECT livres.livre_id, livres.livre_nom
+    FROM livres
+    INNER JOIN thematiques_livres ON livres.livre_id = thematiques_livres.livre_id
+    INNER JOIN thematiques ON thematiques_livres.thematique_id = thematiques.thematique_id
+    WHERE 1=1"""
+    params = []
 
 
+    if thematique_nom:
+        query += " AND thematiques.thematique_nom = %s"
+        params.append(thematique_nom)
 
+    query += " LIMIT %s"
+    params.append(limit)
 
+    cursor.execute(query, params)
+    results = cursor.fetchall()
 
+    cursor.close()
+    connection.close()
+
+    return results
 
 # # Page d'accueil
 # @app.get("/", response_class=HTMLResponse)
