@@ -8,12 +8,12 @@ import datetime
 import mysql.connector
 from dotenv import load_dotenv
 from pydantic import BaseModel
-from fastapi import FastAPI, Query, Depends, HTTPException, Header
+from fastapi import FastAPI, Query, Depends, HTTPException, Header, Request
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from typing import Optional
-
+from pymongo import MongoClient
 
 # Charger les variables d'environnement 
 load_dotenv()
@@ -25,6 +25,15 @@ host = os.getenv('HOST')
 database = os.getenv('DATABASE')
 SECRET_KEY = os.getenv("SECRET_KEY")
 API_PASSWORD = os.getenv("API_PASSWORD")
+
+# Connexion à la base de données MongoDB
+mongohost = os.getenv('MONGOHOST')
+mongoport = os.getenv('MONGOPORT')
+mongodatabase = os.getenv('MONGODATABASE')
+mongocollection = os.getenv('MONGOCOLLECTION')
+client = MongoClient(f"mongodb://{mongohost}:{mongoport}/")
+db = client[f"{mongodatabase}"]
+collection = db[f"{mongocollection}"]
 
 # Configuration de la sécurité
 security = HTTPBearer()
@@ -108,6 +117,11 @@ def get_db_connection():
         database=database
     )
 
+
+@app.get("/", response_class=HTMLResponse, include_in_schema=False) # retirer de la doc
+async def home(request: Request):
+    """Page d'accueil de l'API"""
+    return templates.TemplateResponse("index.html", {"request": request})
 
 @app.get("/livres")
 async def get_livres(
@@ -199,14 +213,14 @@ async def get_editeurs(
     return results
 
 @app.get("/thematiques")
-async def get_editeurs(
+async def get_thematiques(
     credentials: HTTPAuthorizationCredentials = Depends(security),
     limit: Optional[int] = Query(10, alias="limit")
 ):
     """
-    ## Route qui permet de récupérer tous les editeurs connus dans la base de données
-    - **param limit :** int = Nombre d'editeurs limite à retourner
-    - **return :** Liste des noms d'editeurs, et editeur_id associé
+    ## Route qui permet de récupérer toutes les thématiques connues dans la base de données
+    - **param limit :** int = Nombre de thématiques limite à retourner
+    - **return :** Liste des noms de thématiques, et thematique_id associé
     """
     # Vérification du token
     await verify_token(credentials)
@@ -214,7 +228,7 @@ async def get_editeurs(
     connection = get_db_connection()
     cursor = connection.cursor(dictionary=True)
 
-    query = "SELECT * FROM editeurs LIMIT %s"
+    query = "SELECT * FROM thematiques LIMIT %s"
     cursor.execute(query, (limit,))
 
     results = cursor.fetchall()
@@ -350,34 +364,34 @@ async def get_livres_par_thematique(
 
     return results
 
-# # Page d'accueil
-# @app.get("/", response_class=HTMLResponse)
-# def home(request: Request):
-#     # Chargement du fichier HTML depuis le dossier templates
-#     file_path = os.path.join(os.path.dirname(__file__), 'templates', 'index.html')
-#     with open(file_path, 'r', encoding='utf-8') as f:
-#         content = f.read()
-#     return HTMLResponse(content=content)
+# depuis mongoDB
+@app.get("/image/{image_id}")
+async def get_image(
+    image_id : int,
+    credentials: HTTPAuthorizationCredentials = Depends(security)
+    ):
+    """
+    ## Route qui permet de récupérer une image stockée en base 64 dans MongoDB
+    - **param image_id :** int = même id que celui du livre dont on veut récupérer l'image encodée
+    - **return :** Image encodée
 
-# # Fonction pour récupérer un livre depuis la base de données
-# def get_livre_from_id(id: int):
-#     cursor.execute(f"SELECT livre_nom, ISBN_defaut FROM livres WHERE livre_id = {id}")
-#     livres = [{"livre": row[0], "isbn": row[1]} for row in cursor.fetchall()]
-#     return livres
+    Lire une image base 64 :
+    ```python
+    import base64
+    from io import BytesIO
+    from PIL import Image
 
-# @app.get("/livres/{id}", response_class=HTMLResponse)
-# def get_livre(id: int, request: Request):
-#     """Route pour afficher un livre avec son ISBN selon son ID"""
-#     livre = get_livre_from_id(id)  # Appel de la fonction pour récupérer le livre
-#     if not livre:
-#         return {"error": "Livre non trouvé"}  # Gestion de cas où le livre n'existe pas
-#     return templates.TemplateResponse("result.html", {"request": request, "livre": livre[0]})
+    image_base64 = ""
+    image_bytes = base64.b64decode(image_base64)
+    image = Image.open(BytesIO(image_bytes))
+    image.show()
+    ```
+    """
+    await verify_token(credentials)
 
-# Lancer l'application
+    document = collection.find_one({"image_id": image_id}, {"_id": 0})
+
+    return document
+
 if __name__ == "__main__":
     uvicorn.run("app:app", host="127.0.0.1", port=8000, reload=True)
-
-
-
-# asynch def
-#await (verifiy identification)

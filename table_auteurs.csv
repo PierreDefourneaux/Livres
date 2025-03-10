@@ -1,137 +1,72 @@
 auteur_nom,auteur_id
-Vernon B. Brooks,1307
-Adam Boxer,1308
-Robert N. Weinreb,1309
-Don Miguel Ruiz,1310
-Thomas Aquinas,1311
-"Hannah, John",1312
-Sarah R. Labensky,1313
-Frederick Eikerenkoetter,1314
-Tara Leniston,1315
-Marni Wasserman,1316
-Q.B. Tyler,1317
-Eliza Victoria,1318
-Lynda Juall Carpenito,1319
-Nikolai Vasil'evich Gogol',1320
-Marvin Trachtenberg,1321
-Stefan Zweig,1322
-Steven Erikson,1323
-Bryan A. Garner,1324
-Aristotle,1325
-Egon Larsen,1326
-Jun'ichi Isomae,1327
-Betty Mahmoody,1328
-Olivia Fox Cabane,1329
-Jonathan Kellerman,1330
-Mark Summerfield,1331
-Andre Green,1332
-Harlan Ellison,1333
-Christine Greig,1334
-Seiichi Yoshida,1335
-Ray F. Evert,1336
-Thomas Suarez,1337
-Milton Irwin Roemer,1338
-D. G. Mackean,1339
-James H. Gary,1340
-Kenneth E. Bailey,1341
-Scott Spencer,1342
-"Kagwa, Apolo Sir",1343
-Olly Richards,1344
-Paulo Coelho,1345
-Julius,1346
-Thomas H. Cormen,1347
-Deepak Chopra,1348
-Anwar Arifin,1349
-George F. W. Hauck,1350
-Laura Jorstad,1351
-James J. Gormley,1352
-David Byrne,1353
-John Grisham,1354
-Mark Rich,1355
-Robert Beardsley,1356
-Amy Cappellazzo,1357
-Cassandra Clare,1358
-Agnes Rosenstiehl,1359
-Kirsten E. Schulze,1360
-Hatice Kubra Tongar,1361
-Heidi Priebe,1362
-Terri Libenson,1363
-Benny Hinn,1364
-Donald Trump,1365
-Fiona McArthur,1366
-Helen Moss,1367
-Anabel Ternes,1368
-Raymond Murphy,1369
-Mark Frost,1370
-Chinua Achebe,1371
-Varios Autores,1372
-Kennedy Ryan,1373
-Vera Hildebrand,1374
-Emily Ballantyne,1375
-Marcus Aurelius,1376
-"Ersahin, Seyfettin; Ozdemir, Mehmet; Sar...",1377
-Vienna International Exhibition (1873),1378
-Helen Hadsell,1379
-Sidney N. Lederman,1380
-Anna Palmidoro,1381
-Joseph Bruchac,1382
-I. S. Susanto,1383
-Liz Pichon,1384
-Nancy Douglas,1385
-Law Society of Upper Canada,1386
-Ryan Holiday,1387
-Clive Barker,1388
-Jeffrey Archer,1389
-Richard P. Suttmeier,1390
-P. Viswanadha Gupta,1391
-Barbara G. Walker,1392
-Gail Honeyman,1393
-Holly Black,1394
-Muvalar Ramamirthammal,1395
-Enzo Traverso,1396
-Gabriella Ribeiro,1397
-Mariana Enriquez,1398
-Edwin Hewitt,1399
-Thomas Seyfried,1400
-Bill Bryson,1401
-Randy Pausch,1402
-Chris Bailey,1403
-Susan Forward,1404
-Portia Da Costa,1405
-Emma Darcy,1406
-Albert Camus,1407
-Russell B. Adams,1408
-Abe Kobo,1409
-Terry Morris,1410
-Andrew Cockburn,1411
-Paulo Freire,1412
-L. Ron Hubbard,1413
-Lisa Thompson,1414
-Celeste Celeste Ng,1415
-Rajesh Daswani,1416
-H. A. Nuamah,1417
-Philippe Cros,1418
-Joan Saslow,1419
-Robert Service,1420
-M. Saeed Shaikh,1421
-Edith Nesbit,1422
-Terry Goodkind,1423
-Ankur Warikoo,1424
-Allen J. Wood,1425
-Gregorio del Olmo Lete,1426
-Peter Szende,1427
-Ursula Rani Sarma,1428
-Mary Beth Oliver,1429
-Eutychius Patriarch of Alexandria,1430
-Robert Louis Stevenson,1431
-Pat Pattison,1432
-Carole Mortimer,1433
-Seligs Harrison,1434
-Jawanza Kunjufu,1435
-Harish Johari,1436
-Harun Mat Piah,1437
-"Raya, Tarapada",1438
-Pravin Chandra Trivedi,1439
-Julius Evola,1440
-Jenni Romaniuk,1441
-Sjafrizal,1442
+Debbie Raleigh,1753
+"""Duffy""",1754
+Cheryl Siewierski,1755
+Charles H. Townes,1756
+Margaret Davidson,1757
+Robert Cialdini,1758
+Shirl Henke,1759
+C. R. Dodwell,1760
+Edward D. Radin,1761
+Jesus Yanes,1762
+Peter Gloviczki,1763
+Andy Weir,1764
+Claude J. Simon,1765
+Maeve Binchy,1766
+Marisetty Bilmoria Rani,1767
+Ralph Moseley,1768
+Deborah Hughes-Hallett,1769
+Augusto Cury,1770
+Ernest Cline,1771
+Michael Pace,1772
+William Lee Johnson,1773
+Annamma Jacob,1774
+David Smyth,1775
+Jennette McCurdy,1776
+Andrew S. Tanenbaum,1777
+Diana Hendry,1778
+Einhard,1779
+Martha Kousountidou,1780
+Natalia Nikitina,1781
+Robert Alan Dahl,1782
+Bhagwan Singh.,1783
+Joy Monice Malnar,1784
+Max Sutherland,1785
+Elif Safak,1786
+Swami Adgadanand,1787
+Ilyas Ba-Yunus,1788
+Sam Shepard,1789
+Kwame Nkrumah,1790
+Marcos Habif,1791
+Thea Atkinson,1792
+Elizabeth Raum,1793
+Ngugi wa Thiong'o,1794
+J. J. Milteau,1795
+Mary Gaitskill,1796
+"Rogers, Carl R.",1797
+Og Mandino,1798
+Richard Osman,1799
+Jacques Cotnam,1800
+Surinder Singh Johar,1801
+Jerome M. Sattler,1802
+"Bruno of Querfurt, Saint",1803
+Phil Duncan,1804
+William H. Masters,1805
+Francoise Collin,1806
+Leela Prasad,1807
+Rene Thom,1808
+Ruth Wagner,1809
+David Barrett,1810
+Alan D. Sokal,1811
+Andre Ross,1812
+Patrick Trabal,1813
+Peter Krampert,1814
+Gilles Grenon,1815
+Richard H. Thaler,1816
+Pete Moore,1817
+Jean Baptiste Joseph Delambre,1818
+Geetanjali Shree,1819
+Paul Tannery,1820
+Theo Huijbers,1821
+Jessica Minnick,1822
+H'ctor Garc!a and Fracesc Miralles,1823
